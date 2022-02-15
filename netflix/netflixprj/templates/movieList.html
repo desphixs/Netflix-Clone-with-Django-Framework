@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main class='bg-primary_black min-h-screen w-full'>
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex justify-end items-end bg-cover" style="background-image: url('{% static 'assets/vikings.jpg' %}');">
+            <div>
+                <h2 class="text-6xl font-semibold text-white my-4">
+                    Luca
+                </h2>
+                <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus repellendus odit perspiciatis nostrum culpa exercitationem quis. Ab obcaecati odio minus. Dolorum sapiente eaque, repellendus ea fugiat amet fuga libero at!
+                </p>
+                <div class="flex my-4">
+
+                    <button class="flex items-center bg-red py-2 px-5 rounded-md" style="color: rgb(255, 255, 255); background-color: red;">
+                        <ion-icon name="play" class="text-2xl"></ion-icon>
+                        <span class="ml-3 font-medium">
+                            Play
+                        </span>
+                    </button>
+
+                    
+    
+                    <button class="ml-4 text-white flex items-center bg-gray-500 bg-opacity-80 py-2 px-5 rounded-md">
+                       
+                        <ion-icon name="information-circle-outline" class="text-2xl" ></ion-icon>
+                        <span class="ml-3 font-medium">
+                            More Info
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section> 
+        <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Popular on Netflix
+                </h2>
+                <div class="flex justify-center  items-center min-w-full  movie_lis">
+                    {% for movie in movies %}
+                    <div class=" h-40 m-4  bg-blue-500 flex-shrink-0 rounded-md cursor-pointer w-40">
+                        <a href="{% url 'netflixapp:show_det' movie_id=movie.uuid %}"><img src="{{ movie.flyer.url }}" class="w-full h-full " alt=""></a>
+                    </div>
+                    {% endfor %}
+                    
+
+                    
+
+                
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    {% endblock content %}
